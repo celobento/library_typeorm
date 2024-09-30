@@ -1,4 +1,5 @@
 import { IsEmpty, IsNumber, IsOptional, IsString } from "class-validator"
+import { User } from "src/users/user.entity"
 
 export class UpdateBookDto {
     
@@ -16,5 +17,8 @@ export class UpdateBookDto {
     @IsOptional()
     @IsString()
     author: string
+
+    @IsOptional()
+    user: User
 
 }

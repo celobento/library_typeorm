@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BooksModule } from './books/books.module';
+import { UsersModule } from './users/users.module';
 
 // Warning: Setting "synchronize: true" shouldn't be used in production 
 // - otherwise you can lose production data.
@@ -18,7 +19,8 @@ import { BooksModule } from './books/books.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    BooksModule
+    BooksModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],

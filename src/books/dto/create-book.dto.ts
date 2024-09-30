@@ -1,4 +1,5 @@
 import { IsEmpty, IsNotEmpty, IsNumber, IsString } from "class-validator"
+import { User } from "src/users/user.entity"
 
 export class CreateBookDto {
     
@@ -16,5 +17,8 @@ export class CreateBookDto {
     @IsNotEmpty()
     @IsString()
     author: string
+
+    @IsEmpty({message: 'you cant provide the id'})
+    user: User
 
 }

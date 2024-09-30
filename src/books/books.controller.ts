@@ -3,11 +3,14 @@ import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { Book } from './book.entity';
 import { UpdateBookDto } from './dto/update-book.dto';
+import { User } from 'src/users/user.entity';
+import { UsersService } from 'src/users/users.service';
 
 @Controller('books')
 export class BooksController {
 
-    constructor(private bookService: BooksService){}
+    constructor(private readonly  bookService: BooksService
+    ){}
 
     @Get()
     async getAllBooks() {
@@ -15,8 +18,16 @@ export class BooksController {
     }
 
     @Post()
-    createBook(@Body() body: CreateBookDto) {
-        return this.bookService.create(body)
+    async createBook(@Body() body: CreateBookDto): Promise<Book> {
+
+        const user = {
+            "id": "c0e181ad-5845-4378-a619-2343d1cca52f",
+            "email": "bento@gmail.com",
+            "password": "123456"
+        }
+
+        return this.bookService.create(body, user)
+
     }
 
     @Get(':id')
